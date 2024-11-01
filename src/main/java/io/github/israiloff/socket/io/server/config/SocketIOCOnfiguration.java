@@ -6,8 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.corundumstudio.socketio.SocketIOServer;
 
-import io.github.israiloff.socket.io.server.SocketIOProperties;
-
 /**
  * Socket IO main configurations.
  */
