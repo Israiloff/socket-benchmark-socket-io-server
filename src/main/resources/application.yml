@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: socket-io-server
+
+application:
+  socket:
+    io:
+      host: localhost
+      port: 8096
