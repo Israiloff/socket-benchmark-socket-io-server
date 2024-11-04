@@ -11,6 +11,8 @@ COPY src src
 RUN mvn package
 
 FROM eclipse-temurin:21-alpine
+RUN apk add --no-cache tzdata
+ENV TZ=Asia/Tashkent
 RUN mkdir -p $HOME/local/bin/app/
 COPY --from=build $HOME/.m2/target/*.jar $HOME/local/bin/app/app.jar
 WORKDIR $HOME/local/bin/app/
