@@ -3,8 +3,8 @@ package io.github.israiloff.socket.io.server.config;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import com.corundumstudio.socketio.SocketIOServer;
+import com.corundumstudio.socketio.protocol.JacksonJsonSupport;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -27,6 +27,8 @@ public class SocketIOCOnfiguration {
         var config = new com.corundumstudio.socketio.Configuration();
         config.setHostname(properties.host());
         config.setPort(properties.port());
+        var jsonSupport = new JacksonJsonSupport();
+        config.setJsonSupport(jsonSupport);
         return new SocketIOServer(config);
     }
 }
