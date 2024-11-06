@@ -5,12 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.corundumstudio.socketio.SocketIOServer;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Socket IO main configurations.
  */
+@Slf4j
 @Configuration
-@EnableConfigurationProperties({ SocketIOProperties.class })
+@EnableConfigurationProperties({SocketIOProperties.class})
 public class SocketIOCOnfiguration {
 
     /**
@@ -21,6 +23,7 @@ public class SocketIOCOnfiguration {
      */
     @Bean
     SocketIOServer socketIOServer(SocketIOProperties properties) {
+        log.info("Creating socket IO server bean with properties: {}", properties);
         var config = new com.corundumstudio.socketio.Configuration();
         config.setHostname(properties.host());
         config.setPort(properties.port());

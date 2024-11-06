@@ -6,10 +6,12 @@ import org.springframework.stereotype.Component;
 import com.corundumstudio.socketio.SocketIOServer;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Socket IO server command line runner.
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class SocketIOServerCommandLineRunner implements CommandLineRunner {
@@ -23,6 +25,7 @@ public class SocketIOServerCommandLineRunner implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
+        log.info("Starting socket IO server...");
         socketIOServer.start();
     }
 }
