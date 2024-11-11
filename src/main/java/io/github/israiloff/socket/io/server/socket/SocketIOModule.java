@@ -35,9 +35,8 @@ public class SocketIOModule {
     }
 
     private DataListener<ServerModel> onEcho() {
-        var started = LocalDateTime.now();
-
         return (client, data, ackSender) -> {
+            var started = LocalDateTime.now();
             log.info("Received data: {}", data);
             var clientModel = new ClientModel(data.data(), new Time(started, LocalDateTime.now()));
             client.sendEvent("echoResult", clientModel);
@@ -45,9 +44,8 @@ public class SocketIOModule {
     }
 
     private DataListener<ServerModel> onDelayed() {
-        var started = LocalDateTime.now();
-
         return (client, data, ackSender) -> {
+            var started = LocalDateTime.now();
             log.info("on delayed started for data: {}", data);
 
             try {
@@ -63,13 +61,13 @@ public class SocketIOModule {
 
     private ConnectListener onConnect() {
         return client -> {
-            log.info("Client connected: {}", client.getSessionId());
+            log.info("Client connected: '{}'", client.getSessionId());
         };
     }
 
     private DisconnectListener onDisconnect() {
         return client -> {
-            log.info("Client disconnected: {}", client.getSessionId());
+            log.info("Client disconnected: '{}'", client.getSessionId());
         };
     }
 }
